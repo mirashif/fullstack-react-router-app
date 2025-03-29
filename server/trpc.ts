@@ -6,7 +6,7 @@ export function createTRPCContext(opts: { headers: Headers }) {
   const source = opts.headers.get("x-trpc-source") ?? "unknown";
   console.log(">>> tRPC Request from", source);
 
-  return { source };
+  return { ...opts, source };
 }
 
 export type Context = Awaited<ReturnType<typeof createTRPCContext>>;
